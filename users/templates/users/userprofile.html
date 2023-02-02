@@ -1,0 +1,58 @@
+{% extends 'tests/index.html' %}
+
+{% block content %}
+<style>
+    .name-input{
+        padding: 5px;
+        border:0;
+        width: 100%;
+        height: 45px;
+        background-color: rgb(220, 220, 220);
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.1);
+    }  
+    .add-form{
+        border: 1px solid white;
+        border-radius: 30px;
+        width: 500px;
+        padding: 30px;
+        background-color: white;
+        margin: 0 auto;
+        
+    }
+    .button{
+        appearance:none;
+        -webkit-appearance:none;
+        /* usual styles */
+        padding:10px;
+        border:none;
+        background-color:#3F51B5;
+        color:#fff;
+        font-weight:600;
+        border-radius:5px;
+        width:100%;
+        margin-top: 35px;
+        margin-bottom: 35px;
+
+    }
+    #h2{
+        text-align: center;
+    }
+
+</style>
+<h2 id="h2"> Профиль пользователя  </h2>
+
+    <div class="add-form">
+
+        <form method="post" action="#" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>Загрузите фотку: <br><br> {{form.image}}</p>
+            <p>Имя: <br><br>{{form.first_name}}</p>
+            <p>Фамилия: <br><br>{{form.last_name}}</p>
+            <p>Электронная почта: <br><br>{{form.email}}</p>
+            <p>Имя пользователя: <br><br>{{form.username}}</p>
+        
+            <input type="submit" class="button">
+        </form>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,79 @@
+{% extends 'tests/index.html' %}
+
+{% block content %}
+<style>
+    .main-block{
+        /* background-color: rgb(195, 195, 195); */
+        display: flex;
+        justify-content: space-around;
+        align-items:center ;
+        padding: 30px;
+        height: 535px;
+    }
+    .tests-block{
+        background-color: white;
+        display: block;
+        padding: 15px;
+        border-radius: 30px;
+    }
+    .main-description{
+        text-align: center;
+        /* background-color: white; */
+        border-radius: 30px;
+        padding: 20px;
+    }
+    .main-buttons{
+        margin-top: 35px;
+        display: flex;
+        justify-content: space-between;
+        width: 320px;
+    }
+    .a-style{
+        margin:1px;
+        border-radius: 10px;
+        padding: 10px;
+        background-color:#3F51B5;
+        width: 150px;
+        text-decoration: none;
+        color: white; 
+        text-align: center;
+    }
+    a{
+        text-decoration: none;
+        color:blue;
+    }
+    #p{
+        display:flex;
+        justify-content: space-between;
+        
+    }
+</style>
+<div class="main-block">
+    <div class="main-description" >
+        <h1>Начальная страница </h1>
+        <h3>Сайт для создания и прохождения онлайн тестов </h3>
+        Количество тестов:
+        <p>{{count}}</p>
+    </div>
+    <div class="">
+        <div class="tests-block" >
+            <h2>Список тестов:</h2>
+            {% for i in tests %}
+                <p id="p"><a href="{% url 'tests_detail' tests_pk=i.pk %}">{{i.name}}</a> <a href="{% url 'delete_test' test_pk=i.pk %}">Удалить</a></p>
+                <hr>
+                
+            {% endfor %}
+            <h4>Общее количество вопросов: {{count_questions}}</h4>
+        </div>
+        <div class="main-buttons">
+            <a class="a-style" href="{% url 'create_tests' %}">Создать тесты</a>
+            
+            <a class="a-style" href="{% url 'add_questions' %}">Добавить вопросы</a>
+            
+        </div>
+        {{test}}
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends 'tests/index.html' %}
+
+{% block content %}
+<style>
+    .tests-detail{
+        background-color: white;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 15px;
+        
+    }
+    .main-detail-block{
+        /* background-color: rgb(195, 195, 195); */
+        padding: 30px;
+        height: 100vh;
+    }
+    .detail-description{
+        text-align: center;
+        width: auto;
+        
+    }
+    .tests-datail-block{
+        display: flex;
+        justify-content: center;
+        align-items:center ;
+        flex-wrap:wrap;
+    }
+    /* form{
+        display: flex;
+        justify-content: center;
+        align-items:center ;
+        flex-wrap:wrap;
+    } */
+    a{
+        text-align: center;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        padding: 12px;
+        background-color:#3F51B5;
+        width: 150px;
+        text-decoration: none;
+        color: white;
+        margin-left: 5px;
+    }
+    h1,h3{
+        color: rgb(31, 31, 31);
+    }
+    .detail-buttons{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    #testing-button{
+        background-color: rgb(184, 6, 6);
+    }
+    .button{
+        appearance:none;
+        -webkit-appearance:none;
+        /* usual styles */
+        padding:10px;
+        border:none;
+        background-color:#3F51B5;
+        color:#fff;
+        font-weight:600;
+        border-radius:5px;
+        width:100%;
+        margin-top: 35px;
+        margin-bottom: 35px;
+
+    }
+
+</style>
+
+<div class="main-detail-block">
+
+    <div class="detail-description">
+        <h1>Список всех вопросов </h1>
+        <br>
+        <a  id="testing-button" href="{% url 'show_tests' %}">Выйти</a>
+        <br><br>
+
+    </div>
+    <br><br>
+    <div class="tests-datail-block" >
+        <div>
+            {% for i in test %}
+                <form method="post" action="{% url 'check' test_pk %}">
+                    <div class="tests-detail">
+                        {% csrf_token %}
+
+                        <p>{{i.name}}</p>
+                        <p><b>Вопрос:</b><br> <br> {{i.questions}}</p>
+                        <p><input type="radio" name="answer" value="A"><b>A:</b> {{i.first_variant}}</p>
+                        <hr>
+                        <p><input type="radio" name="answer" value="B"><b>B:</b> {{i.second_variant}}</p>
+                        <hr>
+                        <p><input type="radio" name="answer" value="C"><b>C:</b> {{i.third_variant}}</p>
+                        <hr>
+                        <p><input type="radio" name="answer" value="D"><b>D:</b> {{i.fourth_variant}}</p>
+                        <hr>
+                        <br><br>
+                        
+                        <div class="detail-buttons">
+                            <!-- <a href="{% url 'check' test_pk=test_pk %}"> Отправить </a> -->
+                            <!-- <a href="{% url 'delete_question' question_pk=i.pk %}"> Удалить </a> -->
+                            <input type="submit" class="button">
+                        </div>
+                    </div>
+                </form>
+            {% endfor %}
+        </div>
+
+    </div>
+    <br><br><br>
+</div>
+
+{% endblock %}

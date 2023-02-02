@@ -1,0 +1,145 @@
+{% extends 'tests/index.html' %}
+
+{% block content %}
+<style>
+    .answer-choice{
+        padding: 5px;
+        width: 100%;
+        height: 45px;
+        border:0;
+        box-shadow:0 0 15px 4px rgba(0, 0, 0, 0.06);
+        background-color: rgb(220, 220, 220);
+    }
+    .category-choice{
+        padding: 5px;
+        width: 100%;
+        height: 45px;
+        border:0;
+        box-shadow:0 0 15px 4px rgba(0, 0, 0, 0.06);
+        background-color: rgb(220, 220, 220);
+
+    }
+    .questions-input{
+        padding: 5px;
+        width: 100%;
+        height: 45px;
+        border:0;
+        box-shadow:0 0 15px 4px rgba(0, 0, 0, 0.1);
+        background-color: rgb(220, 220, 220);
+    }
+    .first_variant-input{
+        padding: 5px;
+        border:0;
+        width: 100%;
+        height: 45px;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.1);
+        background-color: rgb(220, 220, 220);
+    }
+    .second_variant-input{
+        padding: 5px;
+        width: 100%;
+        border:0;
+        height: 45px;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.1);
+        background-color: rgb(220, 220, 220);
+        
+    }
+    .third_variant-input{
+        padding: 5px;
+        width: 100%;
+        border:0;
+        height: 45px;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.1);
+        background-color: rgb(220, 220, 220);
+    }
+    .fourth_variant-input{
+        padding: 5px;
+        border:0;
+        width: 100%;
+        height: 45px;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.1);
+        background-color: rgb(220, 220, 220);
+    }
+    /* .qauntity-input{
+        width: 40px;
+    } */
+    .add-form{
+        border: 1px solid white;
+        border-radius: 30px;
+        width: 500px;
+        padding: 30px;
+        background-color: white;
+        
+    }
+    .add-form-block{
+        /* background-color: rgb(195, 195, 195); */
+        display: flex;
+        justify-content: space-between;
+        align-items:center ;
+        padding: 30px;
+    }
+    .button{
+        appearance:none;
+        -webkit-appearance:none;
+        /* usual styles */
+        padding:10px;
+        border:none;
+        background-color:#3F51B5;
+        color:#fff;
+        font-weight:600;
+        border-radius:5px;
+        width:100%;
+        margin-top: 35px;
+        margin-bottom: 35px;
+
+    }
+    .add-form-description{
+        text-align: center;
+        width: 600px;
+    }
+    /* .button:focus{
+        background-color:#1b2146;
+    } */
+    .a{
+        margin:1px;
+        border-radius: 10px;
+        padding: 10px;
+        background-color:#3F51B5;
+        width: 150px;
+        text-decoration: none;
+        color: white; 
+        text-align: center;
+    }
+    h1, h3{
+        color: rgb(42, 42, 42);
+    }
+
+</style>
+
+<div class="add-form-block">
+    <div class="add-form-description">
+        <h1>Страница для добавления вопросов к тестам</h1>
+        <h3>Выберите тест и добавьте к ним вопросы в бесконечном количесте</h3>
+        <br>
+        <br>
+            <a class='a' href="{% url 'show_tests' %}">Главня страница</a>
+        
+    </div>
+    <div class="add-form">
+
+        <form method="post">
+            {% csrf_token %}
+            <p>Выберите: <br><br>{{ form.category }}</p>
+            <p>Введите вопрос:<br><br>{{ form.questions }}</p>
+            <p>A: <br><br>{{ form.first_variant }}</p>
+            <p>B: <br><br>{{ form.second_variant }}</p>
+            <p>C: <br><br>{{ form.third_variant }}</p>
+            <p>D: <br><br>{{ form.fourth_variant }}</p>
+            <p>Правильный ответ: <br><br>{{ form.answer }}</p>
+
+            <input type="submit" class="button">
+        </form>
+
+    </div>
+</div>
+{% endblock %}  

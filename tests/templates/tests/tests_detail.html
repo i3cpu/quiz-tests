@@ -1,0 +1,92 @@
+{% extends 'tests/index.html' %}
+
+{% block content %}
+<style>
+    .tests-detail{
+        background-color: white;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 15px;
+        
+    }
+    .main-detail-block{
+        /* background-color: rgb(195, 195, 195); */
+        padding: 30px;
+        height: 100vh;
+    }
+    .detail-description{
+        text-align: center;
+        width: auto;
+        
+    }
+    .tests-datail-block{
+        display: flex;
+        justify-content: start;
+        align-items:center ;
+        flex-wrap:wrap;
+    }
+    a{
+        margin-bottom: 15px;
+        border-radius: 10px;
+        padding: 12px;
+        background-color:#3F51B5;
+        width: 150px;
+        text-decoration: none;
+        color: white;
+        margin-left: 5px;
+    }
+    h1,h3{
+        color: rgb(31, 31, 31);
+    }
+    .detail-buttons{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    #testing-button{
+        background-color: rgb(184, 6, 6);
+    }
+
+</style>
+<div class="main-detail-block">
+    <div class="detail-description">
+        <h1>Список всех вопросов </h1>
+        <br>
+        <a href="{% url 'show_tests' %}">Главня страница</a>
+        <br><br><br><br>
+
+        <a id="testing-button" href="{% url 'testing' test_pk=test_pk %}">Пройти тест</a>
+        <br>
+    </div>
+    <br><br>
+    <div class="tests-datail-block" >
+        {% for i in test %}
+            <div class="tests-detail">
+                <p>{{i.name}}</p>
+                <p><h3>Вопрос: {{i.questions}}</h5></p>
+                    
+                <p><b>A:</b> {{i.first_variant}}</p>
+                <hr>
+                <p><b>B:</b> {{i.second_variant}}</p>
+                <hr>
+                <p><b>C:</b> {{i.third_variant}}</p>
+                <hr>
+                <p><b>D:</b> {{i.fourth_variant}}</p>
+                <hr>
+                <br><br>
+                
+                <div class="detail-buttons">
+                    <a href="{% url 'edit_question' question_pk=i.pk %}"> Изменить </a>
+                    <a href="{% url 'delete_question' question_pk=i.pk %}"> Удалить </a>
+                </div>
+                
+
+            </div>
+        {% endfor %}
+    </div>
+
+    
+</div>
+
+
+{% endblock %}
