@@ -7,9 +7,6 @@
 ![image](https://github.com/i3cpu/quiz-tests/assets/106595656/fad03ee6-6857-4f50-94a9-ff2b3ca337a1)
 
 
-![image](https://github.com/i3cpu/quiz-tests/assets/106595656/de61283b-6a4c-4bf3-80f4-bc0921b63b73)
-
-
 ![image](https://github.com/i3cpu/quiz-tests/assets/106595656/401433a8-13a4-404c-9c08-fd237a364fea)
 
 
